@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>إضافة متقدم</title>
+</head>
+<body>
+
+<h2>إضافة متقدم جديد</h2>
+
+<form method="post">
+
+    <label>اسم المتقدم</label><br>
+    <input type="text" name="name" required><br><br>
+
+    {% for stage in stages %}
+        <label>{{ stage }}</label><br>
+        <select name="m{{ loop.index }}">
+            <option value="">—</option>
+            <option value="تم">تم</option>
+            <option value="لم يتم">لم يتم</option>
+        </select><br><br>
+    {% endfor %}
+
+    <button type="submit">حفظ</button>
+</form>
+
+<br>
+<a href="/dashboard">لوحة التحكم</a> |
+<a href="/logout">تسجيل الخروج</a>
+
+</body>
+</html>

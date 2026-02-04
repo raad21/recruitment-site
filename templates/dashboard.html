@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>لوحة التحكم</title>
+    <style>
+        table { width: 100%; border-collapse: collapse; }
+        th, td { border: 1px solid #ccc; padding: 8px; text-align: center; }
+        th { background: #333; color: white; }
+        .مقبول { color: green; font-weight: bold; }
+        .قيد { color: orange; font-weight: bold; }
+        .غير { color: red; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<h2>لوحة متابعة المتقدمين</h2>
+
+<table>
+<tr>
+    <th>الاسم</th>
+    <th>الحالة</th>
+    <th>آخر مرحلة</th>
+    <th>حذف</th>
+</tr>
+
+{% for row in data %}
+<tr>
+    <td>{{ row[1] }}</td>
+    <td class="{{ row[2][:3] }}">{{ row[2] }}</td>
+    <td>{{ row[3] }}</td>
+    <td>
+        <a href="/delete/{{ row[0] }}"
+           onclick="return confirm('تأكيد الحذف؟');">🗑️</a>
+    </td>
+</tr>
+{% endfor %}
+</table>
+
+<br>
+<a href="/">إضافة متقدم</a>
+
+</body>
+</html>
